@@ -66,5 +66,8 @@ class ImportWbData extends Command
             $result['created'],
             $result['skipped']
         ));
+        if (isset($result['raw_response'])) {
+            $this->line(json_encode($result['raw_response'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        }
     }
 }
