@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: docker/php/Dockerfile
+    command: ["php-fpm"]
     volumes:
       - ./src:/var/www/html
     networks:

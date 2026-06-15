@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.2-fpm
 
 RUN apt-get update && apt-get install -y \
     git \
@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    libbrotli-dev \
     zip \
     curl \
     && pecl install swoole \
@@ -20,7 +21,7 @@ WORKDIR /var/www/html
 
 COPY src/ .
 
-RUN composer install --no-dev --optimize-autoloader --no-interaction \
+RUN composer update --no-dev --optimize-autoloader --no-interaction \
     && php artisan octane:install --server=swoole --no-interaction \
     && chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
