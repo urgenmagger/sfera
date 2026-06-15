@@ -4,10 +4,41 @@ Laravel 8 + Octane (Swoole) — импорт и API выдача данных Wi
 
 **Стек:** PHP 8.2, Laravel 8, Laravel Octane (Swoole), MySQL 8, Docker
 
-## Test with Postman
+**Production:** `http://157.22.252.36` (Octane Swoole)
 
-1. Postman → Import → Link → `https://raw.githubusercontent.com/urgenmagger/sfera/main/postman.json`
-2. Поменять переменную `base_url` на адрес сервера (например `http://157.22.252.36`)
+## Test API
+
+### Postman
+
+Import → Link → `https://raw.githubusercontent.com/urgenmagger/sfera/main/postman.json`
+
+Заменить `base_url` на адрес сервера.
+
+### curl (production)
+
+```bash
+# Продажи (443 записи)
+curl "http://157.22.252.36/api/sales?dateFrom=2026-06-14&dateTo=2026-06-15&limit=10&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie"
+
+# Склады (3559 записей)
+curl "http://157.22.252.36/api/stocks?dateFrom=2026-06-15&limit=10&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie"
+
+# Заказы
+curl "http://157.22.252.36/api/orders?dateFrom=2026-06-14&dateTo=2026-06-15&limit=10&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie"
+
+# Доходы
+curl "http://157.22.252.36/api/incomes?dateFrom=2026-06-14&dateTo=2026-06-15&limit=10&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie"
+```
+
+### curl (локально)
+
+```bash
+# Dev (nginx + php-fpm)
+curl "http://localhost:8081/api/sales?dateFrom=2026-06-14&dateTo=2026-06-15&limit=10&key=..."
+
+# Prod (Octane)
+curl "http://localhost/api/sales?dateFrom=2026-06-14&dateTo=2026-06-15&limit=10&key=..."
+```
 
 ## Quick Start (dev)
 
