@@ -115,3 +115,32 @@ docker compose exec app php artisan route:list
 docker compose exec app php artisan migrate:status
 docker compose down
 ```
+
+## Postman
+
+Импортируй `postman.json` в Postman. Переменные:
+- `base_url` — хост (по умолчанию `http://localhost:8081` для dev)
+- `api_key` — токен из `.env` (`WB_API_KEY`)
+
+<details>
+<summary>Техническое задание (ТЗ)</summary>
+
+Тестовое API на фреймворке Laravel
+
+Реализована выдача сущностей: Продажи, Заказы, Склады, Доходы.
+
+- Авторизация — параметр `key` в query string
+- Формат даты: `Y-m-d`, дата+время: `Y-m-d H:i:s`
+- Все эндпоинты — JSON с пагинацией
+- Лимит по умолчанию 500, параметр `limit`
+- Пагинация: `page`
+- Пример: `/api/orders?dateFrom=...&dateTo=...&page=1&limit=500&key=...`
+
+**GET /api/sales** — `dateFrom`, `dateTo`
+**GET /api/orders** — `dateFrom`, `dateTo`
+**GET /api/stocks** — `dateFrom` (только текущий день)
+**GET /api/incomes** — `dateFrom`, `dateTo`
+
+Стек: docker/docker-compose, PHP 8.1 / 8.2, Laravel 8, Laravel Octane
+
+</details>

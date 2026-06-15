@@ -1,0 +1,97 @@
+{
+  "info": {
+    "name": "Sfera WB API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8081"
+    },
+    {
+      "key": "api_key",
+      "value": "E6kUTYrYwZq2tN4QEtyzsbEBk3ie"
+    },
+    {
+      "key": "dateFrom",
+      "value": "2026-06-14"
+    },
+    {
+      "key": "dateTo",
+      "value": "2026-06-15"
+    }
+  ],
+  "item": [
+    {
+      "name": "Sales",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/sales?dateFrom={{dateFrom}}&dateTo={{dateTo}}&page=1&limit=500&key={{api_key}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "sales"],
+          "query": [
+            {"key": "dateFrom", "value": "{{dateFrom}}"},
+            {"key": "dateTo", "value": "{{dateTo}}"},
+            {"key": "page", "value": "1"},
+            {"key": "limit", "value": "500"},
+            {"key": "key", "value": "{{api_key}}"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "Orders",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/orders?dateFrom={{dateFrom}}&dateTo={{dateTo}}&page=1&limit=500&key={{api_key}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "orders"],
+          "query": [
+            {"key": "dateFrom", "value": "{{dateFrom}}"},
+            {"key": "dateTo", "value": "{{dateTo}}"},
+            {"key": "page", "value": "1"},
+            {"key": "limit", "value": "500"},
+            {"key": "key", "value": "{{api_key}}"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "Stocks",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/stocks?dateFrom={{dateFrom}}&page=1&limit=500&key={{api_key}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "stocks"],
+          "query": [
+            {"key": "dateFrom", "value": "{{dateFrom}}"},
+            {"key": "page", "value": "1"},
+            {"key": "limit", "value": "500"},
+            {"key": "key", "value": "{{api_key}}"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "Incomes",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/incomes?dateFrom={{dateFrom}}&dateTo={{dateTo}}&page=1&limit=500&key={{api_key}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "incomes"],
+          "query": [
+            {"key": "dateFrom", "value": "{{dateFrom}}"},
+            {"key": "dateTo", "value": "{{dateTo}}"},
+            {"key": "page", "value": "1"},
+            {"key": "limit", "value": "500"},
+            {"key": "key", "value": "{{api_key}}"}
+          ]
+        }
+      }
+    }
+  ]
+}
