@@ -1,10 +1,8 @@
 #!/bin/sh
 set -e
 
-php artisan key:generate --force
-
-if [ ! -f /var/www/html/storage/oauth-private.key ]; then
-    php artisan passport:keys --force
+if [ -z "$APP_KEY" ] || [ "$APP_KEY" = "base64:" ]; then
+    php artisan key:generate --force
 fi
 
 php artisan migrate --force

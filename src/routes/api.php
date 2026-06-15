@@ -18,6 +18,9 @@ Route::get('/health', function () {
     return response()->json(['status' => 'ok']);
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('api.key')->group(function () {
+    Route::get('/sales',   [\App\Http\Controllers\WbDataController::class, 'sales']);
+    Route::get('/orders',  [\App\Http\Controllers\WbDataController::class, 'orders']);
+    Route::get('/stocks',  [\App\Http\Controllers\WbDataController::class, 'stocks']);
+    Route::get('/incomes', [\App\Http\Controllers\WbDataController::class, 'incomes']);
 });
