@@ -4,6 +4,11 @@ Laravel 8 + Octane (Swoole) — импорт и API выдача данных Wi
 
 **Стек:** PHP 8.2, Laravel 8, Laravel Octane (Swoole), MySQL 8, Docker
 
+## Test with Postman
+
+1. Postman → Import → Link → `https://raw.githubusercontent.com/urgenmagger/sfera/main/postman.json`
+2. Поменять переменную `base_url` на адрес сервера (например `http://157.22.252.36`)
+
 ## Quick Start (dev)
 
 ```bash
