@@ -9,7 +9,7 @@ docker compose up -d
 docker compose exec app composer install
 docker compose exec app php artisan key:generate
 docker compose exec app php artisan migrate
-open http://localhost:8080
+open http://localhost:8081
 ```
 
 ## Database Access
@@ -97,6 +97,28 @@ WB_API_KEY=
 | Models | `app/Models/Stock.php`, `Sale.php`, `Order.php`, `Income.php` |
 | Migrations | `database/migrations/` |
 | API config | `config/services.php` |
+
+## VPS Deploy
+
+```bash
+# Скопировать проект на сервер
+git clone <repo-url> sfera && cd sfera
+
+# Скопировать .env шаблон и заполнить
+cp .env.production .env
+# Заполнить: APP_URL, DB_PASSWORD, WB_API_HOST, WB_API_KEY
+
+# Swap (для серверов с 1 ГБ RAM)
+sudo fallocate -l 1G /swapfile && sudo chmod 600 /swapfile
+sudo mkswap /swapfile && sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+# Запуск
+docker compose -f docker-compose.prod.yml up -d --build
+
+# Первый импорт
+docker compose -f docker-compose.prod.yml exec app php artisan wb:import --entity=all --from=2026-06-01 --to=2026-06-14
+```
 
 ## Useful Commands
 
