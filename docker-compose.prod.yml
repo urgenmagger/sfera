@@ -9,6 +9,10 @@ services:
     environment:
       - APP_ENV=production
       - APP_DEBUG=false
+    env_file:
+      - .env
+    volumes:
+      - ./.env:/var/www/html/.env
     networks:
       - sfera-network
     depends_on:
