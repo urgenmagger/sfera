@@ -1,9 +1,8 @@
 #!/bin/sh
 set -e
 
-if [ -z "$APP_KEY" ] || [ "$APP_KEY" = "base64:" ]; then
-    php artisan key:generate --force
-fi
+APP_KEY_VALUE=$(php artisan key:generate --show)
+export APP_KEY="$APP_KEY_VALUE"
 
 php artisan migrate --force
 
